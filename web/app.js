@@ -24,6 +24,11 @@ const mapValue = (value, inputMin, inputMax, outputMin, outputMax) => {
   return (value - inputMin) * (outputMax - outputMin) / (inputMax - inputMin) + outputMin;
 }
 
+// Promsie pour mettre le code en pause avant que l'animation commence (pour pas quel'animation bogue au début)
+const delay = (ms) => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   
   // 1. Audio + Equalizer
@@ -108,11 +113,6 @@ document.addEventListener("DOMContentLoaded", () => {
       im1.style.animation = 'rotate 2.0s';
     }, 1000);
   };
-
-  // Promsie pour mettre le code en pause avant que l'animation commence (pour pas que l'animation bogue au début)
-  const delay = (ms) => {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
   
   // Délai asynchrone avant l'animation
   async function getImages() {
